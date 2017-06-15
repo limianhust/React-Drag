@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import kind from './C1.js'
+import kind from './kind.js'
+import getLeftData from './getLeftData.js'
 
 class App extends Component {
   constructor(props) {
@@ -38,27 +39,32 @@ class App extends Component {
       }
     }
   }
-  let
+  
+
   render() {
-    let elem = []
-    for (key in this.state.data.obj1) {
+    console.log(this.state.data)
+    let data = getLeftData(this.state.data.obj1)
+    var content = []
+    var key
+    console.log(data)
+    for( key in data){
+      console.log(key,data)
       let obj = {}
       obj.name = key
-      obj.data = this.state.data.obj1[key]
-      elem.push(obj)
+      obj.data = data[key]
+      content.push(obj)
     }
-    //console.log(elem)
-    let content = elem.map((item, index) => {
-      return (
-          <kind data={item} />
-      )
-    })
-    
+    console.log(content)
+    let list = content.map((item, index) => 
+      <li><kind name={item.name} data={item.data} /></li>
+      
+    )
+
 
     return (
-      <div className="cntainer">
-        {content}
-      </div>
+      <ul className="container">
+        {list}
+      </ul>
     );
   }
 }

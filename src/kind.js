@@ -18,13 +18,15 @@ export default class kind extends Component {
 
     }
     render() {
-
-        let listContent = this.state.list.map((item, index) => {
-            return <Li index={index} data={item} onDragLeave={this.dragLeave.bind(this)} />
-        })
+        console.log(this.props.data)
+        
+        let listContent = this.props.data.map((item, index) => 
+            <Li mcc={item.mcc} name={item.name} onDragLeave={this.dragLeave.bind(this)} />
+        )
+        console.log(this.props.data)
         return (
             <div classsName="item">
-                <div>props.data.name</div>
+                <div>{this.props.name}</div>
                 <ul onDragLeave={this.dragLeave.bind(this)}>
                     {listContent}
                 </ul>
