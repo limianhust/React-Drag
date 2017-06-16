@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import kind from './kind.js'
+import Kind from './Kind.js'
 import getLeftData from './getLeftData.js'
 
 class App extends Component {
@@ -40,7 +40,6 @@ class App extends Component {
     }
   }
   
-
   render() {
     console.log(this.state.data)
     let data = getLeftData(this.state.data.obj1)
@@ -56,10 +55,10 @@ class App extends Component {
     }
     console.log(content)
     let list = content.map((item, index) => 
-      <li><kind name={item.name} data={item.data} /></li>
+      <li><Kind key={index} data={item} /></li>
       
     )
-
+    console.log(list)
 
     return (
       <ul className="container">

@@ -2,35 +2,31 @@ import React, { Component } from 'react'
 // import './c1.css'
 import Li from './Li.js'
 
-export default class kind extends Component {
+export default class Kind extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            list: [
-                {
-                    name: 'qq',
-                    mcc: '12',
-                    merchantId: '234',
-                    normalMerchantClassName: 'www'
-                }
-            ]
         }
 
     }
     render() {
         console.log(this.props.data)
         
-        let listContent = this.props.data.map((item, index) => 
-            <Li mcc={item.mcc} name={item.name} onDragLeave={this.dragLeave.bind(this)} />
+        let listContent = this.props.data.data.map((item, index) => 
+            <li>
+                <Li index={index} data={item} />
+            </li>
         )
         console.log(this.props.data)
         return (
+            
             <div classsName="item">
-                <div>{this.props.name}</div>
+                <div>{this.props.data.name}</div>
                 <ul onDragLeave={this.dragLeave.bind(this)}>
                     {listContent}
                 </ul>
             </div>
+        
         )
     }
 
@@ -40,3 +36,4 @@ export default class kind extends Component {
 
 
 }
+// mcc={item.mcc} name={item.name} onDragLeave={this.dragLeave.bind(this)}

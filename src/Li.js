@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import './c1.css'
+import Dotline from './Dotline'
 
 export default class Li extends Component {
     constructor(props) {
@@ -9,19 +10,9 @@ export default class Li extends Component {
         }
     }
     render() {
-        if (this.state.status === '1') {
-            var drag = <li onDragStart={this.dragStart.bind(this)}  >{this.props.data.mcc},{this.props.data.name}</li>
-        }
-        else if (this.state === '0') {
-            var drag = <div className="dotLine"></div>
-        } else {
-            var drag = ''
-        }
-        // drag = this.props.data.status === '1' ?
-        //     <li onDragStart={this.dragStart.bind(this)} onDragEnd={this.dragEnd.bind(this)}  >{this.props.data.mcc}{this.props.data.name}</li> :
-        //     <div className="dotLine"></div>
         return (
-            { drag }
+            {this.state.status === '1' ? <li index={this.props.index} onDragStart={this.dragStart.bind(this)} onDragEnd={this.dragEnd.bind(this)}  >{this.props.data.mcc+this.props.data.name}</li> :
+            <Dotline /> }
         )
 
 
@@ -38,9 +29,4 @@ export default class Li extends Component {
             })
         }
     }
-
-
-
-
-
 }
